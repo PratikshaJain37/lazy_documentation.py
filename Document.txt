@@ -1,4 +1,16 @@
-hi
-hi
-hi
-hi
+DOCUMENT FOR ADAKNG.py
+
+for loop
+comment
+MultiLineComment:
+A cell (X,Y) can be visited if max(∣X−r∣,∣Y−c∣)<=K
+MultiLineComment End
+for loop
+for loop
+if block
+comment
+MultiLineComment:
+The possible cells king can visit will form a square (or rectangle, depending on where he is placed). The area of this figure is the answer.
+dx and dy are length of horizontal and vertical sides of rectangle
+The +1+1+1 in the formula is to account for the row/column the king is standing it.
+MultiLineComment End
