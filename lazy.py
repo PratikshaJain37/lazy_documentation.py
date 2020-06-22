@@ -4,11 +4,14 @@
 # Created On: 21.06.20
 
 #-------------------------------#
-# Import required: Standard library
+
+# Imports required (Standard library)
 import os
 from shutil import copyfile
 
-# Path of Python file to be read; put path without extension
+#-------------------------------#
+
+# Path of Python file to be read; put PATH without extension
 name_of_file = 'ADAKNG'
 
 # File copied and renamed to txt(readable)
@@ -18,47 +21,77 @@ os.rename('%s_copy.py'%(name_of_file), '%s.txt'%(name_of_file))
 inputfile = open('%s.txt'%(name_of_file))
 
 # File to be put in 
-outputfile = open('Document.txt','a')
-outputfile.write('DOCUMENT FOR %s.py\n\n'%(name_of_file))
-# For multiline comments
+outputfile = open('%s_document.txt'%(name_of_file),'a')
+outputfile.write('# DOCUMENT FOR %s.py # \n\n'%(name_of_file))
+
+# For multiline comments as strings
 stack = False
 
-for line in inputfile:
-    line = line.strip()
-    if line=='':
-        pass
-    elif line.startswith('for'):
-        outputfile.write('for loop\n')
-    elif line.startswith("while"):
-        outputfile.write('while loop\n')
-    elif line.startswith('def'):
-        outputfile.write('function\n')
-    elif line.startswith("#"):
-        outputfile.write(line+'\n')
-    elif line.startswith("try"):
-        outputfile.write('try block\n')
-    elif line.startswith("except"):
-        outputfile.write('except block\n')
-    elif line.startswith("if"):
-        outputfile.write('if block\n')
-    elif line.startswith("else"):
-        outputfile.write('else block\n')
-    elif line.startswith("elif"):
-        outputfile.write('elif block\n')
-    elif line.startswith("\'\'\'"):
-        if stack==False:
-            outputfile.write('MultiLineComment:\n')
-            stack = True
-        else:
-            outputfile.write('MultiLineComment End\n')
-            stack = False
-    elif stack==True:
-        outputfile.write(line+'\n')
-    else:
-        pass
+# Maintaining Line Count
+i = -1
 
+for line in inputfile:
+    i += 1
+    line = line.strip()
+    
+    if line=='':
+        outputfile.write('\n')
+    
+    elif line.startswith('for'):
+        
+        
+        temp = line[line.index('in')+3:line.index(':')]
+        outputfile.write('Line %d - For Loop: Iterating in *%s* \n'%(i,temp))
+        
+    elif line.startswith("while"):
+
+        temp = line[5:].strip(':')
+        outputfile.write('Line %d - While Loop: Condition is *%s* \n'%(i,temp))
+    
+    
+    elif line.startswith('def'):
+
+        temp = line[3:].strip('():')
+        outputfile.write('Line %d - Calling FUNCTION: %s\n'%(i,temp))
     
 
+    elif line.startswith("#"):
+        outputfile.write(line[1:]+'\n')
+    
+    elif line.startswith("try"):
+        outputfile.write('Line %d - Try Block\n'%i)
+    
+    elif line.startswith("except"):
+        outputfile.write('Line %d - Except Block\n'%i)
+    
+    elif line.startswith("if"):
+        
+        temp = line[2:len(line)-1]
+        outputfile.write('Line %d - If Condition: %s\n'%(i,temp))
+    
+    elif line.startswith("else"):
+        outputfile.write('Line %d - Else block\n'%i)
+    
+    elif line.startswith("elif"):
+        
+        temp = line[4:].strip(':')
+        outputfile.write('Line %d - Elif Condition: %s\n'%(i,temp))
+    
+    elif line.startswith("\'\'\'") or line.startswith('\"\"\"'):
+        if stack==False:
+            outputfile.write('\n') #MultiLineComment
+            stack = True
+        else:
+            outputfile.write('\n\n') #MultiLineComment End
+            stack = False
+    
+    elif stack==True:
+        outputfile.write(line+'\n')
+    
+    else:
+        outputfile.write('\n')
+
+    
 
 outputfile.close()
 inputfile.close()

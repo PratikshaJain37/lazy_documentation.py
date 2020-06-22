@@ -29,3 +29,6 @@ for i in range (t):
     dx = min(c+k,8) - max(c-k,1) + 1
     dy = min(r+k,8) - max(r+k,8) + 1
     print (dx*dy)
+    
+def Hello():
+    print("hello")
