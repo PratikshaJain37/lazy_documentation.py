@@ -1,0 +1,61 @@
+# DOCUMENT FOR sample.py # 
+
+Sample python script for lazy.py (Document_This)
+
+Author: Pratiksha Jain
+Created On: 21.06.20
+
+-------------------------------
+
+
+This is a For Loop:
+
+Line 11 - For Loop: Iterating over *bar* 
+
+
+This is a While Loop:
+
+Line 16 - While Loop: Condition is **i<5** 
+
+
+
+I am defining functions:
+Line 21 - Defining FUNCTION: <FooBar>
+Calling FUNCTION: <FooBar>
+Line 23 - Defining FUNCTION: <foo_bar>
+Calling FUNCTION: <foo_bar>
+
+I am calling a function here:
+Calling FUNCTION: <FooBar>
+
+This is a Try/Except/Else Block:
+Line 30 - Try Block
+
+Line 32 - Except Block
+
+Line 34 - Else block
+
+
+This is a If/Elif/Else Block:
+
+Line 39 - If Condition: **string == "Hello World"**
+
+Line 41 - Elif Condition: **string == "FooBar"**
+
+Line 43 - Else block
+
+
+This is a Multiline Comment:
+
+Hello
+World
+
+
+This is another Multiline Comment:
+
+Foo
+Bar
+
+
+
+-------------------------------
